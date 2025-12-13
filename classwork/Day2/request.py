@@ -1,5 +1,5 @@
 import requests
-api_key="13226762cf08d11904e1fd2ee94af569"
+api_key="56c6a94b317556f571753e1d2681b8c1"
 city = input("Enter city: ")
 
 try:
