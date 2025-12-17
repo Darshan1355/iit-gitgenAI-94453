@@ -2,7 +2,6 @@ import pandas as pd
 import streamlit as st
 import pandasql as ps
 
-
 st.title("CSV file print")
 
 data_file = st.file_uploader("Upload a CSV file", type=["csv"])

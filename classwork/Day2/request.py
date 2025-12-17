@@ -7,7 +7,7 @@ try:
   response = requests.get(url)
   print("status:", response.status_code)
   weather = response.json()
-# print(weather)
+  # print(weather)
   print("Temperature: ", weather["main"]["temp"])
   print("Humidity: ", weather["main"]["humidity"])
   print("Wind Speed: ", weather["wind"]["speed"])
