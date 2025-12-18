@@ -35,11 +35,10 @@ if user_prompt:
     resp = response.json()
     full_text = resp["choices"][0]["message"]["content"]
 
-    # Stream word by word
     placeholder = st.empty()
     streamed_text = ""
 
     for word in full_text.split():
         streamed_text += word + " "
         placeholder.markdown(streamed_text)
-        time.sleep(0.05)  # adjust speed here
+        time.sleep(0.05) 
