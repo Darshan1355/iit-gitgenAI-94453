@@ -41,15 +41,15 @@ if data_file:
            st.write("You:", user_input)
         
         llm_input = f"""
-        Table Name: data 
-        Table Schema: {df.dtypes}
-        Question: {user_input}
-        Instruction:
-            Write a SQL query for the above question. 
-            Generate SQL query only in plain text format and nothing else.
-            If you cannot generate the query, then output 'Error'.
-            
-    """
+            Table Name: data 
+            Table Schema: {df.dtypes}
+            Question: {user_input}
+            Instruction:
+                Write a SQL query for the above question. 
+                Generate SQL query only in plain text format and nothing else.
+                If you cannot generate the query, then output 'Error'.
+                
+        """
         query = llm.invoke(llm_input)
         st.session_state.conversation.append({"role": "assistant", "content": query.content})
         st.write("generated SQL query: ", query.content)
@@ -60,13 +60,13 @@ if data_file:
             st.dataframe(result)
 
             llm_input_explain = f"""
-            Table Name: data 
-            Table Schema: {df.dtypes}
-            SQL Query: {query.content}
-            Query Result: {result}
-            Instruction:
-                Explain the query result in English.
-        """
+                Table Name: data 
+                Table Schema: {df.dtypes}
+                SQL Query: {query.content}
+                Query Result: {result}
+                Instruction:
+                    Explain the query result in English.
+            """
             explanation = llm.invoke(llm_input_explain)
             st.session_state.conversation.append({"role": "assistant", "content": explanation.content})
             st.write("Explanation: ", explanation.content)

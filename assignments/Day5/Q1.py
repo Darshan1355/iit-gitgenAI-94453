@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+import pandas as pd
+import streamlit as st
 
 chrome_options = Options()
 chrome_options.add_argument("--headless")
@@ -13,8 +15,6 @@ driver.implicitly_wait(10)
 table_body = driver.find_element(By.CLASS_NAME, "table")
 table_rows = table_body.find_elements(By.TAG_NAME, 'tr')
 
-
-import pandas as pd
 data_list = []
 
 
@@ -31,7 +31,7 @@ for row in table_rows[1:]:
         "Brochure": cols[7].text
     }
     data_list.append(info)
-    print(info)
+    st.write(info)
 
 df = pd.DataFrame(data_list)
 df.to_csv("internship_batch_schedules.csv", index=False)
