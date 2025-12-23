@@ -1,6 +1,4 @@
 
-# cmd> pip install langchain-openai
-
 from langchain_openai import OpenAIEmbeddings
 import numpy as np
 

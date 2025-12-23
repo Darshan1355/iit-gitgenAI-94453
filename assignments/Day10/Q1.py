@@ -9,7 +9,6 @@ from langchain.tools import tool
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-
 load_dotenv()
 
 llm = init_chat_model(
