@@ -12,4 +12,4 @@ def delete_resume(resume_id):
         return f"❌ Resume ID not found: {resume_id}"
     
     collection.delete(ids=[resume_id])
-    return f"✅ Resume deleted successfully: {resume_id}"
+    return f"✅ Resume deleted successfully.\n Id :{resume_id}"
