@@ -1,25 +1,20 @@
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 import streamlit as st
-raw_text=raw_text = """
-Artificial Intelligence (AI) is transforming modern technology.
-
-It enables machines to learn from data, recognize patterns, and make decisions with minimal human intervention.
+raw_text= """
+Artificial Intelligence (AI) is transforming modern technology.It enables machines to learn from data, recognize patterns, and make decisions with minimal human intervention.
 
 Key applications of AI include:
 - Natural Language Processing (chatbots, translators)
 - Computer Vision (face recognition, medical imaging)
 - Recommendation Systems (Netflix, Amazon)
 
-AI is widely used in industries such as healthcare, finance, agriculture, and education.
-
-However, AI also raises ethical concerns including data privacy, bias, and job displacement.
-Addressing these challenges is crucial for responsible AI development.
+AI is widely used in industries such as healthcare, finance, agriculture, and education.However, AI also raises ethical concerns including data privacy, bias, and job displacement.Addressing these challenges is crucial for responsible AI development.
 """
 
 text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=800,
-    chunk_overlap=100,
-    separators=["\n\n", "\n", " ", ""]
+    chunk_size=50,
+    chunk_overlap=10,
+    separators=[" ","\n"]
 )
 
 docs = text_splitter.create_documents([raw_text])
