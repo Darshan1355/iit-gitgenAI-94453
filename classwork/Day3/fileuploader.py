@@ -3,7 +3,7 @@ import streamlit as st
 
 st.title("CSV file print")
 
-data_file = st.file_uploader("Upload a CSV file", type=["csv"])
+data_file = st.file_uploader("Upload a CSV file", type=["CSV"])
 
 if data_file:
     df = pd.read_csv(data_file)

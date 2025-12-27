@@ -1,8 +1,11 @@
 import streamlit as st
 import requests
+import os   
+from dotenv import load_dotenv
 
 username = "darshan"
 password = "1234"
+
 
 
 if 'page' not in st.session_state:
@@ -26,10 +29,12 @@ def login_page():
 
 
 def weather_app():
+    load_dotenv()  
+
+    api_key = os.getenv("Weather_API")    
     st.header("🌤 Weather App")
     st.write("Welcome to the Weather App!")
 
-    api_key = "56c6a94b317556f571753e1d2681b8c1"
     city = st.text_input("Enter city")
 
     if city:
