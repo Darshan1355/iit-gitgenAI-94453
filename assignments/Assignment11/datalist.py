@@ -10,17 +10,22 @@ def dataList():
         st.rerun()
 
     collection = get_collection()
-
     data = collection.get(include=["documents", "metadatas"])
 
     if not data["ids"]:
         st.info("No resumes found.")
         return
 
+    # 🔹 Build DataFrame
     df = pd.DataFrame({
         "id": data["ids"],
         "document": data["documents"],
-        "metadata": data["metadatas"]
+        "added_date": [
+            meta.get("added_at", "—") for meta in data["metadatas"]
+        ],
+        "last_updated_date": [
+            meta.get("updated_at", "—") for meta in data["metadatas"]
+        ]
     })
 
     # 🔹 Display table
@@ -28,7 +33,6 @@ def dataList():
 
     st.divider()
     st.subheader("⚙️ Actions")
-
 
     selected_id = st.selectbox("Select Document ID", df["id"].tolist())
 
@@ -48,6 +52,3 @@ def dataList():
             collection.delete(ids=[selected_id])
             st.toast("Resume deleted successfully ✅")
             time.sleep(2)
-            
-
-                

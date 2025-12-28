@@ -5,6 +5,7 @@ from configuration import get_collection, get_embedding_model
 import streamlit as st
 import os
 import time
+from datetime import datetime   # ✅ ADD THIS
 
 def add_resume():
     st.header("Add Resume")
@@ -33,13 +34,19 @@ def add_resume():
     collection = get_collection()
     resume_id = f"resume_{uuid.uuid4().hex}"
 
+    # ✅ Capture date & time
+    added_at = datetime.now().strftime("%Y-%m-%d %H.%M.%S")  
+    # or: datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
     collection.add(
         ids=[resume_id],
         documents=[resume_text],
         embeddings=resume_embeddings,
-        metadatas=[{"source": pdf_path.name}]
+        metadatas=[{
+            "source": pdf_path.name,
+            "added_at": added_at   # ✅ STORE DATE HERE
+        }]
     )
 
     st.success(f"Resume added successfully ✅\nID: {resume_id}")
     time.sleep(2)
-    

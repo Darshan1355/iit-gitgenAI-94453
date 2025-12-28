@@ -1,9 +1,9 @@
 import streamlit as st
-from configuration import get_collection
-from configuration import get_embedding_model
+from configuration import get_collection, get_embedding_model
 from pathlib import Path
 from langchain_community.document_loaders import PyPDFLoader
 import os
+from datetime import datetime  
 
 def update_resume():
     st.header("Update Resume")
@@ -41,13 +41,16 @@ def update_resume():
         embed_model = get_embedding_model()
         resume_embeddings = embed_model.embed_documents([resume_text])
 
+        updated_at = datetime.now().strftime("%Y-%m-%d %H.%M.%S")
+
         collection.add(
             ids=[update_resume_id],
             documents=[resume_text],
             embeddings=resume_embeddings,
-            metadatas=[{"source": pdf_path.name}]
+            metadatas=[{
+                "source": pdf_path.name,
+                "updated_at": updated_at  
+            }]
         )
 
         st.success(f"✅ Resume updated successfully\nID: {update_resume_id}")
-
-        

@@ -18,7 +18,7 @@ def get_embedding_model():
     return embed_model
 
 def get_collection():
-    db = chromadb.PersistentClient(path="G:/task1/iit-gitgenAI-94453/assignments/Day12/resume_db")
+    db = chromadb.PersistentClient(path="G:/task1/iit-gitgenAI-94453/assignments/Assignment11/resume_db")
     collection = db.get_or_create_collection(
         name="resumes"
     )
